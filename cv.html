@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV Editable WYSIWYG</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  body { margin: 0; font-family: Arial; display: flex; background: #f4f6f9; }
+  .sidebar { width: 220px; background: #2c3e50; color: white; height: 100vh; padding-top: 30px; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; align-items: center; transition: transform 0.4s; z-index: 1000; }
+  .sidebar h2 { margin-bottom: 30px; }
+  .sidebar button { width: 80%; margin: 10px 0; padding: 12px; border: none; border-radius: 8px; background: #34495e; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
+  .sidebar button:hover { background: #1abc9c; transform: scale(1.05); }
+  .toggle-btn { display: none; position: fixed; top: 15px; left: 15px; background: #1abc9c; border: none; color: white; font-size: 24px; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1001; }
+  .main { margin-left: 220px; padding: 40px; width: calc(100% - 220px); }
+  h1 { color: #2c3e50; }
+  h2 { color: #34495e; border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-top: 30px; }
+  .section { display: none; opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
+  .section.active { display: block; opacity: 1; transform: translateY(0); }
+  .card { background: white; padding: 20px; border-radius: 12px; margin: 15px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
+  .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+  /* Panel de edición WYSIWYG */
+  #editor { position: fixed; top: 60px; right: -450px; width: 400px; background: #fff; box-shadow: -3px 0 10px rgba(0,0,0,0.2); height: 90vh; padding: 20px; transition: right 0.4s; z-index: 1002; overflow-y: auto; }
+  #editor.show { right: 1%; }
+  #editor h3 { margin-top: 0; }
+  #editor #editor-toolbar { margin-bottom: 10px; }
+  #editor #editor-toolbar button { padding: 5px 10px; margin-right: 5px; border: none; border-radius: 3px; cursor: pointer; background: #ecf0f1; }
+  #editor #editor-content { width: 100%; height: 300px; width:380px; border: 1px solid #ccc; padding: 10px; border-radius: 5px; overflow-y: auto; }
+  #editor .save-btn { background: #1abc9c; color: white; padding: 10px 15px; margin-top: 10px; border: none; border-radius: 5px; cursor: pointer; }
+  #editor .close-btn { background: #e74c3c; color: white; padding: 10px 15px; margin-top: 10px; border: none; border-radius: 5px; cursor: pointer; margin-left:5px; }
+  @media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.active { transform: translateX(0); } .main { margin-left: 0; width: 100%; padding: 20px; } .toggle-btn { display: block; } }
+</style>
+</head>
+<body>
+
+<button class="toggle-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
+
+<div class="sidebar">
+  <h2>Mi CV</h2>
+  <button onclick="mostrarSeccion('perfil')"><i class="fa-solid fa-user"></i> Perfil</button>
+  <button onclick="mostrarSeccion('experiencia')"><i class="fa-solid fa-briefcase"></i> Experiencia</button>
+  <button onclick="mostrarSeccion('educacion')"><i class="fa-solid fa-graduation-cap"></i> Educación</button>
+  <button onclick="mostrarSeccion('habilidades')"><i class="fa-solid fa-code"></i> Habilidades</button>
+  <button style="margin-top:20px;" onclick="abrirEditor()">⚙️ Editar CV</button>
+</div>
+
+<div class="main">
+  <h1 id="nombre">Jordan Granados Vargas</h1>
+  <p id="contacto"><strong>Email:</strong> jordan-gv@hotmail.com | <strong>Tel:</strong> +506 8784-8328 | <strong>LinkedIn:</strong> www.linkedin.com/in/jordan-granados-b3b559142</p>
+
+  <div id="perfil" class="section active">
+    <h2>Perfil Profesional</h2>
+    <p id="perfil-text">Soy un profesional en desarrollo web con experiencia en frontend y backend.</p>
+  </div>
+
+  <div id="experiencia" class="section">
+    <h2>Experiencia Laboral</h2>
+    <div id="experiencia-text">
+	  <div class="card">Programador en Control de Acceso en Accesos Automáticos [marzo 2025 – Actualidad]<br>Funciones del puesto:
+Instalación de Software de Control de Acceso:
+-
+Instalación de softwar para el control de acceso que gestionen el acceso a puertas peatonales o automáticas, barreras automáticas, cortinas rápidas, pasos rápidos, cualquier dispositivo eléctrico que ocupe restringir el acceso.
+-
+Conocimiento en redes: revisión y cambio de rango de IP, activación/desactivación de firewall, manipulación de antivirus, activación/desactivación de puertos, habilitación de carpetas compartidas.
+-
+Desarrollar sistemas de auditoría y reportes de acceso.
+Bases de Datos:
+-
+Activar las bases de datos (SQL o Access) según corresponda de los diversos softwares de control de acceso, que almacenará la información sobre usuarios, accesos permitidos, registros de eventos, contraseñas.
+Mantenimiento y Actualización:
+-
+Supervisar el buen funcionamiento del sistema, solucionando posibles problemas o fallos técnicos.
+-
+Realizar actualizaciones regulares de software para mejorar la seguridad y funcionalidad.
+-
+Atender al cliente externo como interno para consultas</div>
+	  <div class="card">Soporte de TI e Infraestructura en Soluciones Inteligentes en Tecnología (SITCR) [marzo 2022 – marzo 2025]<br>Funciones del puesto:
+-
+Brindar soporte a toda la organización en temas relacionados a tecnología, equipos, sistemas, plataformas o procesos.
+-
+Soporte técnico de software hardware de la organización.
+-
+Instalación de software de aplicaciones y activación de productos.
+-
+Administración de cuentas de correos Microsoft 365 y cPanel.
+-
+Administración y monitoreo de red local.
+-
+Administración de Servidores de Impresión.
+-
+Administración de Active Directory.
+-
+Administración de servicios de la nube SharePoint, OneDrive.
+-
+Administración de central telefónica.</div>
+	  <div class="card">Soporte de TI e Infraestructura en Instituto de Normas Técnicas de Costa Rica (INTECO) [marzo 2020 – marzo 2022]<br>Algunas funciones del puesto:
+-
+Brindar soporte a toda la organización en temas relacionados a tecnología, equipos, sistemas, plataformas o procesos.
+-
+Soporte técnico de software hardware de la organización.
+-
+Confeccionar y administrar el registro de proveedores.
+-
+Instalación de software de aplicaciones y activación de productos.
+-
+Administración de cuentas de correos de Google, Microsoft 365, Adobe, Odoo, Zoom.</div>
+      <div class="card">Técnico en Soporte de TI en la Universidad Internacional de las Américas (UIA) [marzo 2018 – febrero 2020]<br>Breve descripción del puesto:
+- Instalación de nuevos puntos de red - oficinas - aulas.
+- Elaborar y mantener actualizado el inventario del equipo de cómputo, de comunicaciones, y software resguardar las licencias de uso, manuales y medios físicos del software adquirido.
+- Mantenimiento preventivo a laboratorios solicitado por la jefatura.</div>
+    </div>
+  </div>
+
+  <div id="educacion" class="section">
+    <h2>Educación</h2>
+    <div id="educacion-text">
+	
+      <div class="card">Bachillerato en Ingeniería Sistemas de Información (en progreso) - Universidad Internacional de las Américas [UIA].</div>
+	  <div class="card">Técnico en Infraestructura en TI (2023) - Incecom.</div>
+	  <div class="card">Técnico en Informática en Redes (2017) - Colegio Técnico Profesional de Calle Blancos.</div>
+	  <div class="card">Programador de Páginas Web (2017) - Instituto Nacional de Aprendizaje [INA].</div>
+	  <div class="card">Operador de Aplicaciones Ofimáticas (2015) - Instituto Nacional de Aprendizaje [INA].</div>
+      <div class="card">Bachillerato en Educación Media (2014) - Liceo Napoleón Quesada Salazar.</div>
+    </div>
+  </div>
+
+  <div id="habilidades" class="section">
+    <h2>Habilidades</h2>
+    <div id="habilidades-text">
+      <div class="card">✔ React, Vue, JavaScript, HTML, CSS<br>✔ Gestión de proyectos ágiles (Scrum)<br>✔ Comunicación y liderazgo</div>
+    </div>
+  </div>
+</div>
+
+<!-- Panel WYSIWYG -->
+<div id="editor">
+  <h3>Editar Sección</h3>
+  <select id="seccion-select" onchange="cargarContenido()">
+    <option value="perfil">Perfil</option>
+    <option value="experiencia">Experiencia</option>
+    <option value="educacion">Educación</option>
+    <option value="habilidades">Habilidades</option>
+  </select>
+  
+  <!-- Toolbar de formato -->
+  <div id="editor-toolbar">
+    <button onclick="formatText('bold')"><b>B</b></button>
+    <button onclick="formatText('italic')"><i>I</i></button>
+    <button onclick="formatText('underline')"><u>U</u></button>
+    <button onclick="formatText('insertUnorderedList')">• Lista</button>
+    <button onclick="formatText('insertOrderedList')">1. Lista</button>
+    <button onclick="formatText('createLink')">🔗 Link</button>
+  </div>
+
+  <div id="editor-content" contenteditable="true"></div>
+  <br>
+  <button class="save-btn" onclick="guardarCambios()">Guardar</button>
+  <button class="close-btn" onclick="cerrarEditor()">Cerrar</button>
+</div>
+
+<script>
+function mostrarSeccion(id) {
+  const secciones = document.querySelectorAll('.section');
+  secciones.forEach(sec => sec.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if(window.innerWidth <= 768) document.querySelector('.sidebar').classList.remove('active');
+}
+
+function toggleSidebar() {
+  document.querySelector('.sidebar').classList.toggle('active');
+}
+
+// --- Editor WYSIWYG ---
+function abrirEditor() {
+  document.getElementById('editor').classList.add('show');
+  cargarContenido();
+}
+
+function cerrarEditor() {
+  document.getElementById('editor').classList.remove('show');
+}
+
+function cargarContenido() {
+  const seccion = document.getElementById('seccion-select').value;
+  let contenido = '';
+  if(seccion==='perfil') contenido = document.getElementById('perfil-text').innerHTML;
+  else contenido = document.getElementById(seccion+'-text').innerHTML;
+  document.getElementById('editor-content').innerHTML = contenido;
+}
+
+function formatText(comando) {
+  if(comando==='createLink'){
+    const url = prompt('Ingresa el enlace:');
+    if(url) document.execCommand(comando,false,url);
+  } else {
+    document.execCommand(comando,false,null);
+  }
+}
+
+function guardarCambios() {
+  const seccion = document.getElementById('seccion-select').value;
+  const nuevoContenido = document.getElementById('editor-content').innerHTML;
+  if(seccion==='perfil') document.getElementById('perfil-text').innerHTML = nuevoContenido;
+  else document.getElementById(seccion+'-text').innerHTML = nuevoContenido;
+  localStorage.setItem(seccion, nuevoContenido);
+  alert('Cambios guardados');
+}
+
+// Cargar contenido guardado
+window.onload = () => {
+  ['perfil','experiencia','educacion','habilidades'].forEach(seccion=>{
+    const contenido = localStorage.getItem(seccion);
+    if(contenido){
+      if(seccion==='perfil') document.getElementById('perfil-text').innerHTML = contenido;
+      else document.getElementById(seccion+'-text').innerHTML = contenido;
+    }
+  });
+};
+</script>
+</body>
+</html>
