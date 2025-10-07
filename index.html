@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CV Editable WYSIWYG</title>
+<title>CV Jordan Granados v</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   body { margin: 0; font-family: Arial; display: flex; background: #f4f6f9; }
@@ -12,7 +12,7 @@
   .sidebar button { width: 80%; margin: 10px 0; padding: 12px; border: none; border-radius: 8px; background: #34495e; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
   .sidebar button:hover { background: #1abc9c; transform: scale(1.05); }
   .toggle-btn { display: none; position: fixed; top: 15px; left: 15px; background: #1abc9c; border: none; color: white; font-size: 24px; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1001; }
-  .main { margin-left: 220px; padding: 40px; width: calc(100% - 220px); }
+  .main { margin-left: 220px; padding: 40px; width: calc(100% - 220px); padding-top: 60px; ;}
   h1 { color: #2c3e50; }
   h2 { color: #34495e; border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-top: 30px; }
   .section { display: none; opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
@@ -36,12 +36,13 @@
 <button class="toggle-btn" onclick="toggleSidebar()"><i class="fa-solid fa-bars"></i></button>
 
 <div class="sidebar">
-  <h2>Mi CV</h2>
-  <button onclick="mostrarSeccion('perfil')"><i class="fa-solid fa-user"></i> Perfil</button>
-  <button onclick="mostrarSeccion('experiencia')"><i class="fa-solid fa-briefcase"></i> Experiencia</button>
-  <button onclick="mostrarSeccion('educacion')"><i class="fa-solid fa-graduation-cap"></i> Educación</button>
-  <button onclick="mostrarSeccion('habilidades')"><i class="fa-solid fa-code"></i> Habilidades</button>
- <!--<button style="margin-top:20px;" onclick="abrirEditor()">⚙️ Editar CV</button> -->
+	  <h2>Mi CV</h2>
+	  <button onclick="mostrarSeccion('perfil')"><i class="fa-solid fa-user"></i> Perfil</button>
+	  <button onclick="mostrarSeccion('experiencia')"><i class="fa-solid fa-briefcase"></i> Experiencia</button>
+	  <button onclick="mostrarSeccion('educacion')"><i class="fa-solid fa-graduation-cap"></i> Educación</button>
+	  <button onclick="mostrarSeccion('conocimientos')"><i class="fa-solid fa-code"></i> Conocimientos</button>
+	  <button onclick="mostrarSeccion('habilidades')"><i class="fa-solid fa-code"></i> Habilidades</button>
+	  <!--<button style="margin-top:20px;" onclick="abrirEditor()">⚙️ Editar CV</button> -->
 </div>
 
 <div class="main">
@@ -50,64 +51,88 @@
 
   <div id="perfil" class="section active">
     <h2>Perfil Profesional</h2>
-    <p id="perfil-text">Soy un profesional en desarrollo web con experiencia en frontend y backend.</p>
+    <p id="perfil-text">
+	Profesional de TI con amplia experiencia en soporte técnico integral, administración de hardware, software, redes y servidores, así como gestión de plataformas en la nube (Microsoft 365, Google Workspace, Odoo, SharePoint, OneDrive, Zoom, Adobe). Especializado en Active Directory, servidores de impresión, central telefónica y control de acceso, con capacidad para instalar, configurar y mantener sistemas críticos, elaborar inventarios, gestionar licencias y proveedores, y generar auditorías y reportes.</p>
+
+	<p id="perfil-text">
+	Posee conocimientos en bases de datos (SQL Server, MySQL, MySQL Workbench), desarrollo y automatización (Arduino, Android Studio), Linux Ubuntu, seguridad informática (ESET, Norton, Malwarebytes, Kaspersky, Sophos), gestión de proyectos/incidencias (Jira, Redmine, OTRS) y telecomunicaciones y cableado estructurado (Grandstream).</p>
+
+	<p id="perfil-text">
+	Cuenta con formación académica y técnica: Bachillerato en Ingeniería en Sistemas de Información (en progreso), Técnico en Infraestructura en TI, Técnico en Informática en Redes, Programador de Páginas Web y Operador de Aplicaciones Ofimáticas.</p>
+
+	<p id="perfil-text">
+	Perfil versátil, analítico y proactivo, con alto grado de responsabilidad, capacidad para trabajar bajo presión, planificar y organizar tareas, y orientación al servicio al cliente. Capaz de garantizar la continuidad operativa, seguridad y eficiencia de la infraestructura tecnológica, optimizando recursos, reduciendo riesgos y mejorando la productividad de la organización.	</p>
+
   </div>
 
   <div id="experiencia" class="section">
     <h2>Experiencia Laboral</h2>
     <div id="experiencia-text">
-	  <div class="card">Programador en Control de Acceso en Accesos Automáticos [marzo 2025 – Actualidad]<br>Funciones del puesto:
-Instalación de Software de Control de Acceso:
--
-Instalación de softwar para el control de acceso que gestionen el acceso a puertas peatonales o automáticas, barreras automáticas, cortinas rápidas, pasos rápidos, cualquier dispositivo eléctrico que ocupe restringir el acceso.
--
-Conocimiento en redes: revisión y cambio de rango de IP, activación/desactivación de firewall, manipulación de antivirus, activación/desactivación de puertos, habilitación de carpetas compartidas.
--
-Desarrollar sistemas de auditoría y reportes de acceso.
-Bases de Datos:
--
-Activar las bases de datos (SQL o Access) según corresponda de los diversos softwares de control de acceso, que almacenará la información sobre usuarios, accesos permitidos, registros de eventos, contraseñas.
-Mantenimiento y Actualización:
--
-Supervisar el buen funcionamiento del sistema, solucionando posibles problemas o fallos técnicos.
--
-Realizar actualizaciones regulares de software para mejorar la seguridad y funcionalidad.
--
-Atender al cliente externo como interno para consultas</div>
-	  <div class="card">Soporte de TI e Infraestructura en Soluciones Inteligentes en Tecnología (SITCR) [marzo 2022 – marzo 2025]<br>Funciones del puesto:
--
-Brindar soporte a toda la organización en temas relacionados a tecnología, equipos, sistemas, plataformas o procesos.
--
-Soporte técnico de software hardware de la organización.
--
-Instalación de software de aplicaciones y activación de productos.
--
-Administración de cuentas de correos Microsoft 365 y cPanel.
--
-Administración y monitoreo de red local.
--
-Administración de Servidores de Impresión.
--
-Administración de Active Directory.
--
-Administración de servicios de la nube SharePoint, OneDrive.
--
-Administración de central telefónica.</div>
-	  <div class="card">Soporte de TI e Infraestructura en Instituto de Normas Técnicas de Costa Rica (INTECO) [marzo 2020 – marzo 2022]<br>Algunas funciones del puesto:
--
-Brindar soporte a toda la organización en temas relacionados a tecnología, equipos, sistemas, plataformas o procesos.
--
-Soporte técnico de software hardware de la organización.
--
-Confeccionar y administrar el registro de proveedores.
--
-Instalación de software de aplicaciones y activación de productos.
--
-Administración de cuentas de correos de Google, Microsoft 365, Adobe, Odoo, Zoom.</div>
-      <div class="card">Técnico en Soporte de TI en la Universidad Internacional de las Américas (UIA) [marzo 2018 – febrero 2020]<br>Breve descripción del puesto:
-- Instalación de nuevos puntos de red - oficinas - aulas.
-- Elaborar y mantener actualizado el inventario del equipo de cómputo, de comunicaciones, y software resguardar las licencias de uso, manuales y medios físicos del software adquirido.
-- Mantenimiento preventivo a laboratorios solicitado por la jefatura.</div>
+	<div class="card">Programador en Control de Acceso en Accesos Automáticos [marzo 2025 – Actualidad]
+
+		<br><br><b>Funciones del puesto:</b><br>
+
+		
+			<br>- Instalar y configurar software de control de acceso para puertas, barreras, cortinas rápidas y otros dispositivos eléctricos, garantizando la seguridad de los accesos.</b>
+
+			<br>- Administrar y monitorear redes locales, configurando rangos de IP, firewall, antivirus, puertos y carpetas compartidas para asegurar conectividad y protección.</b>
+
+			<br>- Activar y gestionar bases de datos (SQL y Access) relacionadas con usuarios, permisos y registros de eventos.</b>
+
+			<br>- Desarrollar sistemas de auditoría y reportes de acceso para seguimiento y control de eventos.</b>
+
+			<br>- Supervisar el funcionamiento del sistema, solucionando problemas técnicos y ejecutando mantenimiento preventivo y correctivo.</b>
+
+			<br>- Realizar actualizaciones periódicas de software para mejorar seguridad y funcionalidad.</b>
+
+			<br>- Atender consultas de clientes internos y externos, brindando soporte y orientación sobre el uso del sistema.</b>
+
+	</div>
+	<div class="card">Soporte de TI e Infraestructura en Soluciones Inteligentes en Tecnología (SITCR) [marzo 2022 – marzo 2025]
+
+		<br><br><b>Funciones del puesto:</b><br>
+		
+			<br>- Soporte técnico integral a toda la organización en hardware, software y sistemas.</b>
+
+			<br>- Instalación, configuración y activación de aplicaciones y licencias corporativas.</b>
+
+			<br>- Administración de cuentas en Microsoft 365 y cPanel.</b>
+
+			<br>- Gestión y monitoreo de red local y servidores de impresión.</b>
+
+			<br>- Administración de Active Directory y servicios en la nube (SharePoint, OneDrive).</b>
+
+			<br>- Gestión de central telefónica y comunicaciones internas.</b>
+
+	</div>
+	<div class="card">Soporte de TI e Infraestructura en Instituto de Normas Técnicas de Costa Rica (INTECO) [marzo 2020 – marzo 2022]
+
+		<br><br><b>Funciones del puesto:</b>
+
+		<br>
+			<br>- Brindar soporte técnico integral a toda la organización, atendiendo requerimientos relacionados con equipos, sistemas, plataformas y procesos tecnológicos.</b>
+
+			<br>- Diagnosticar, reparar y dar mantenimiento a hardware y software, asegurando el funcionamiento continuo de los recursos informáticos.</b>
+
+			<br>- Instalar, configurar y activar software y aplicaciones, garantizando el cumplimiento de licencias y estándares institucionales.</b>
+
+			<br>- Administrar cuentas corporativas en plataformas como Google Workspace, Microsoft 365, Adobe, Odoo y Zoom, asegurando la correcta asignación de accesos y la seguridad de la información.</b>
+
+	</div>
+	<div class="card">Técnico en Soporte de TI en la Universidad Internacional de las Américas (UIA) [marzo 2018 – febrero 2020]
+
+		<br><br><b>Funciones del puesto:</b><br>
+		
+			<br>- Brindar soporte técnico integral a toda la organización, clientes internos y externos. </b>
+			<br>- Instalar y configurar puntos de red en oficinas y aulas, garantizando conectividad estable y eficiente.</b>
+
+			<br>- Ejecutar mantenimiento preventivo y correctivo en laboratorios, optimizando el rendimiento y disponibilidad de los equipos.</b>
+
+			<br>- Elaborar y mantener actualizado el inventario de equipos de cómputo, comunicaciones y software, asegurando el control de licencias y documentación técnica.</b>
+
+	</div>
+
+
     </div>
   </div>
 
@@ -124,12 +149,56 @@ Administración de cuentas de correos de Google, Microsoft 365, Adobe, Odoo, Zoo
     </div>
   </div>
 
-  <div id="habilidades" class="section">
-    <h2>Habilidades</h2>
-    <div id="habilidades-text">
-      <div class="card">✔ React, Vue, JavaScript, HTML, CSS<br>✔ Gestión de proyectos ágiles (Scrum)<br>✔ Comunicación y liderazgo</div>
+	
+  <div id="conocimientos" class="section">
+    <h2>Otros conocimientos</h2>
+    <div id="conocimientos-text">
+      <div class="card">
+			<br>✔ Hyper- V
+			<br>✔ Microsoft SQL Server 
+			<br>✔ MySQL
+			<br>✔ MySQL Workbench
+			<br>✔ Microsoft 365
+			<br>✔ Cableado estructurado
+			<br>✔ Arduino
+			<br>✔ Android Studio
+			<br>✔ Linux Ubuntu
+			<br>✔ Google Workspace
+			<br>✔ Odoo
+			<br>✔ Jira
+			<br>✔ Redmine
+			<br>✔ ESET
+			<br>✔ NORTON
+			<br>✔ OTRS
+			<br>✔ Malwarebytes
+			<br>✔ Karsperky
+			<br>✔ Sophos
+			<br>✔ Grandstream
+			<br>✔ Ubiquiti
+			<br>✔ Python
+			<br>✔ Elastix
+			<br>✔ HTML
+			<br>✔ CSS
+			<br>✔ JavaScript
+	  
+	  
+	  </div>
     </div>
   </div>
+  
+		<div id="habilidades" class="section">
+		<h2>Habilidades</h2>
+		<div id="habilidades-text">
+			<div class="card">
+				<br>✔ Analítico. 
+				<br>✔ Proactivo, 
+				<br>✔ Capacidad de trabajar bajo presión. 
+				<br>✔ Alto grado de responsabilidad. 
+				<br>✔ Planificación. 
+				<br>✔ Organizado.
+			</div>
+		</div>
+		</div>
 </div>
 
 <!-- Panel WYSIWYG -->
@@ -139,7 +208,7 @@ Administración de cuentas de correos de Google, Microsoft 365, Adobe, Odoo, Zoo
     <option value="perfil">Perfil</option>
     <option value="experiencia">Experiencia</option>
     <option value="educacion">Educación</option>
-    <option value="habilidades">Habilidades</option>
+    <option value="habilidades">Conocimientos</option>
   </select>
   
   <!-- Toolbar de formato -->
@@ -219,5 +288,4 @@ window.onload = () => {
 </script>
 </body>
 </html>
-
 
