@@ -6,29 +6,138 @@
 <title>CV Jordan Granados v</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-  body { margin: 0; font-family: Arial; display: flex; background: #f4f6f9; }
-  .sidebar { width: 220px; background: #2c3e50; color: white; height: 100vh; padding-top: 30px; position: fixed; top: 0; left: 0; display: flex; flex-direction: column; align-items: center; transition: transform 0.4s; z-index: 1000; }
-  .sidebar h2 { margin-bottom: 30px; }
-  .sidebar button { width: 80%; margin: 10px 0; padding: 12px; border: none; border-radius: 8px; background: #34495e; color: white; cursor: pointer; display: flex; align-items: center; gap: 10px; transition: 0.3s; }
-  .sidebar button:hover { background: #1abc9c; transform: scale(1.05); }
-  .toggle-btn { display: none; position: fixed; top: 15px; left: 15px; background: #1abc9c; border: none; color: white; font-size: 24px; padding: 10px; border-radius: 5px; cursor: pointer; z-index: 1001; }
-  .main { margin-left: 220px; padding: 40px; width: calc(100% - 220px); padding-top: 60px; ;}
-  h1 { color: #2c3e50; }
-  h2 { color: #34495e; border-bottom: 2px solid #ddd; padding-bottom: 5px; margin-top: 30px; }
-  .section { display: none; opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-  .section.active { display: block; opacity: 1; transform: translateY(0); }
-  .card { background: white; padding: 20px; border-radius: 12px; margin: 15px 0; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; }
-  .card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+	body { 
+		margin: 0; 
+		font-family: Arial; 
+		display: flex; 
+		background: #f4f6f9; 
+	}
+  
+	.sidebar { 
+		width: 220px; 
+		background: #2c3e50; 
+		color: white; 
+		height: 100vh; 
+		padding-top: 30px; 
+		position: fixed; 
+		top: 0; 
+		left: 0; 
+		display: flex; 
+		flex-direction: column; 
+		align-items: center; 
+		transition: transform 0.4s; 
+		z-index: 1000; 
+	}
+  
+	.sidebar h2 { 
+		margin-bottom: 30px; 
+	}
+  
+	.sidebar button { 
+		width: 80%; 
+		margin: 10px 0; 
+		padding: 12px; 
+		border: none; 
+		border-radius: 8px; 
+		background: #34495e; 
+		color: white; 
+		cursor: pointer; 
+		display: flex; 
+		align-items: center; 
+		gap: 10px; 
+		transition: 0.3s; 
+	}
+  
+	.sidebar button:hover { 
+		background: #1abc9c; 
+		transform: scale(1.05); 
+	}
+  
+	.toggle-btn { 
+		display: none; 
+		position: fixed; 
+		top: 15px; 
+		left: 15px; 
+		background: #1abc9c; 
+		border: none; 
+		color: white; 
+		font-size: 24px; 
+		padding: 10px; 
+		border-radius: 5px; 
+		cursor: pointer; 
+		z-index: 1001; 
+	}
+  
+	.main { 
+		margin-left: 220px; 
+		padding: 40px; 
+		width: calc(100% - 220px); 
+		padding-top: 60px;
+	}
+  
+	h1 { 
+		padding: 40px;
+		color: #2c3e50; 
+	}
+  
+	h2 { 
+		color: #34495e; 
+		border-bottom: 2px solid #ddd; 
+		padding-bottom: 5px; 
+		margin-top: 30px; 
+	}
+  
+	.section { 
+		display: none; 
+		opacity: 0; 
+		transform: translateY(30px); 
+		transition: all 0.6s ease; 
+	}
+  
+	.section.active { 
+		display: block; 
+		opacity: 1; 
+		transform: translateY(0);
+	}
+  
+	.card { 
+		background: white; 
+		padding: 20px; 
+		border-radius: 12px; 
+		margin: 15px 0; 
+		box-shadow: 0 4px 10px rgba(0,0,0,0.1); 
+		transition: transform 0.3s, box-shadow 0.3s; 
+	}
+  
+	.card:hover { 
+		transform: translateY(-5px); 
+		box-shadow: 0 8px 20px rgba(0,0,0,0.15); 
+	}
+  
   /* Panel de edición WYSIWYG */
+  
   #editor { position: fixed; top: 60px; right: -450px; width: 400px; background: #fff; box-shadow: -3px 0 10px rgba(0,0,0,0.2); height: 90vh; padding: 20px; transition: right 0.4s; z-index: 1002; overflow-y: auto; }
   #editor.show { right: 1%; }
-  #editor h3 { margin-top: 0; }
-  #editor #editor-toolbar { margin-bottom: 10px; }
+  
+	#editor h3 { 
+		margin-top: 0; 
+	}
+  
+	#editor #editor-toolbar { 
+		margin-bottom: 10px; 
+	}
+  
   #editor #editor-toolbar button { padding: 5px 10px; margin-right: 5px; border: none; border-radius: 3px; cursor: pointer; background: #ecf0f1; }
+  
   #editor #editor-content { width: 100%; height: 300px; width:380px; border: 1px solid #ccc; padding: 10px; border-radius: 5px; overflow-y: auto; }
+  
   #editor .save-btn { background: #1abc9c; color: white; padding: 10px 15px; margin-top: 10px; border: none; border-radius: 5px; cursor: pointer; }
+  
   #editor .close-btn { background: #e74c3c; color: white; padding: 10px 15px; margin-top: 10px; border: none; border-radius: 5px; cursor: pointer; margin-left:5px; }
+  
   @media (max-width: 768px) { .sidebar { transform: translateX(-100%); } .sidebar.active { transform: translateX(0); } .main { margin-left: 0; width: 100%; padding: 20px; } .toggle-btn { display: block; } }
+  
+  
 </style>
 </head>
 <body>
@@ -288,4 +397,3 @@ window.onload = () => {
 </script>
 </body>
 </html>
-
